@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>بسمله ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  color:white;
+  text-align:center;
+}
+
+#lockScreen{
+  position:fixed;
+  inset:0;
+  background:#ff7eb3;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+
+input{
+  padding:12px;
+  border-radius:20px;
+  border:none;
+  text-align:center;
+  font-size:18px;
+}
+
+button{
+  margin-top:15px;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:white;
+  color:#ff4f81;
+  font-size:18px;
+  cursor:pointer;
+}
+
+.container{
+  padding:40px 20px;
+  display:none;
+}
+
+img{
+  width:80%;
+  max-width:300px;
+  border-radius:20px;
+  margin:20px 0;
+}
+
+#counter{
+  margin-top:20px;
+  background:rgba(255,255,255,0.2);
+  padding:15px;
+  border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- شاشة كلمة السر -->
+<div id="lockScreen">
+  <h2>🔐 اكتبي كلمة السر 💖</h2>
+  <input id="password" type="password" placeholder="كلمة السر">
+  <button onclick="checkPassword()">دخول</button>
+</div>
+
+<!-- الموقع -->
+<div class="container" id="site">
+  <h1>❤️ بسمله ❤️</h1>
+
+  <p>تملي معاك قلبي مطمّن 💖</p>
+
+  <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+
+  <p>بحبك النهارده وبكره وطول العمر 💌</p>
+
+  <h2 id="counter">⏳</h2>
+</div>
+
+<!-- أغنية تملي معاك -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/_vG-9H0nY3I?autoplay=1&loop=1&playlist=_vG-9H0nY3I"
+allow="autoplay"></iframe>
+
+<script>
+
+// ✨ غير كلمة السر من هنا
+const correctPassword = "selem";
+
+function checkPassword(){
+  const input = document.getElementById("password").value;
+
+  if(input === correctPassword){
+    document.getElementById("lockScreen").style.display="none";
+    document.getElementById("site").style.display="block";
+  }else{
+    alert("غلط 😢");
+  }
+}
+
+// عداد الحب من 12/10/2025
+const startDate = new Date("2025-10-12");
+
+function updateCounter(){
+  const now = new Date();
+  let diff = now - startDate;
+
+  if(diff < 0){
+    counter.innerHTML="لسه العدّاد هيبدأ ❤️";
+    return;
+  }
+
+  const d = Math.floor(diff/(1000*60*60*24));
+  diff%=1000*60*60*24;
+  const h = Math.floor(diff/(1000*60*60));
+  diff%=1000*60*60;
+  const m = Math.floor(diff/(1000*60));
+  const s = Math.floor((diff%(1000*60))/1000);
+
+  counter.innerHTML=`❤️ ${d} يوم ${h} ساعة ${m} دقيقة ${s} ثانية ❤️`;
+}
+
+setInterval(updateCounter,1000);
+updateCounter();
+
+</script>
+
+</body>
+</html>
